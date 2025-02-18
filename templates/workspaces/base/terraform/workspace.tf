@@ -103,14 +103,13 @@ module "backup" {
   azurerm_storage_account_id               = azurerm_storage_account.stg.id
   enable_local_debugging                   = var.enable_local_debugging
   enable_cmk_encryption                    = var.enable_cmk_encryption
-  shared_storage_name                      = var.shared_storage_name
+  shared_storage_name                      = local.shared_storage_name
 
 
   depends_on = [
     azurerm_storage_account.stg,
     azapi_resource.shared_storage,
     module.network,
-    module.airlock,
     module.aad
   ]
 }
