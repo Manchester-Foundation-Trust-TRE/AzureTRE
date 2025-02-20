@@ -66,33 +66,6 @@ export const App: React.FunctionComponent = () => {
 
   useEffect(() => initializeFileTypeIcons(), []);
 
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const userPreference = localStorage.getItem("darkMode");
-    if (userPreference) {
-      setDarkMode(JSON.parse(userPreference));
-    }
-  }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.style.setProperty("--background-color", "#121212");
-      root.style.setProperty("--text-color", "#ffffff");
-      root.style.setProperty("--primary-color", "#bb86fc");
-    } else {
-      root.style.setProperty("--background-color", "#ffffff");
-      root.style.setProperty("--text-color", "#000000");
-      root.style.setProperty("--primary-color", "#6200ee");
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
-    localStorage.setItem("darkMode", JSON.stringify(!darkMode));
-  };
-
   return (
     <>
       <Routes>
@@ -133,7 +106,7 @@ export const App: React.FunctionComponent = () => {
                   />
                   <Stack styles={stackStyles} className="tre-root">
                     <Stack.Item grow className="tre-top-nav">
-                      <TopNav darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                      <TopNav />
                     </Stack.Item>
                     <Stack.Item grow={100} className="tre-body">
                       <GenericErrorBoundary>

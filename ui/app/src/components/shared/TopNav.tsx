@@ -1,18 +1,10 @@
 import React from "react";
-import { getTheme, Icon, mergeStyles, Stack, Toggle } from "@fluentui/react";
+import { getTheme, Icon, mergeStyles, Stack } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { UserMenu } from "./UserMenu";
 import { NotificationPanel } from "./notifications/NotificationPanel";
 
-interface TopNavProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
-
-export const TopNav: React.FunctionComponent<TopNavProps> = ({
-  darkMode,
-  toggleDarkMode,
-}) => {
+export const TopNav: React.FunctionComponent = () => {
   return (
     <>
       <div className={contentClass}>
@@ -33,14 +25,6 @@ export const TopNav: React.FunctionComponent<TopNavProps> = ({
           <Stack.Item>
             <NotificationPanel />
           </Stack.Item>
-          <Stack.Item>
-            <Toggle
-              label="Dark mode"
-              checked={darkMode}
-              onChange={toggleDarkMode}
-              styles={toggleStyles}
-            />
-          </Stack.Item>
           <Stack.Item grow>
             <UserMenu />
           </Stack.Item>
@@ -59,12 +43,3 @@ const contentClass = mergeStyles([
     padding: "0 10px 0 10px",
   },
 ]);
-
-const toggleStyles = {
-  root: {
-    marginRight: 10,
-  },
-  label: {
-    color: theme.palette.white,
-  },
-};
