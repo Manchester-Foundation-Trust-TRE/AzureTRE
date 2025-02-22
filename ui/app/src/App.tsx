@@ -27,6 +27,8 @@ import { initializeFileTypeIcons } from "@fluentui/react-file-type-icons";
 import { CostResource } from "./models/costs";
 import { CostsContext } from "./contexts/CostsContext";
 import { LoadingState } from "./models/loadingState";
+import DarkModeToggle from "react-dark-mode-toggle";
+import { ThemeProvider, createTheme } from "@fluentui/react";
 
 export const App: React.FunctionComponent = () => {
   const [appRoles, setAppRoles] = useState([] as Array<string>);
@@ -43,6 +45,9 @@ export const App: React.FunctionComponent = () => {
   const [createFormResource, setCreateFormResource] = useState({
     resourceType: ResourceType.Workspace,
   } as CreateFormResource);
+  const [isDarkMode, setIsDarkMode] = useState(
+    () => localStorage.getItem("darkMode") === "true"
+  );
 
   const apiCall = useAuthApiCall();
 
@@ -65,6 +70,64 @@ export const App: React.FunctionComponent = () => {
   }, [apiCall]);
 
   useEffect(() => initializeFileTypeIcons(), []);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", isDarkMode.toString());
+  }, [isDarkMode]);
+
+  const lightTheme = createTheme({
+    palette: {
+      themePrimary: DefaultPalette.themePrimary,
+      themeLighterAlt: DefaultPalette.themeLighterAlt,
+      themeLighter: DefaultPalette.themeLighter,
+      themeLight: DefaultPalette.themeLight,
+      themeTertiary: DefaultPalette.themeTertiary,
+      themeSecondary: DefaultPalette.themeSecondary,
+      themeDarkAlt: DefaultPalette.themeDarkAlt,
+      themeDark: DefaultPalette.themeDark,
+      themeDarker: DefaultPalette.themeDarker,
+      neutralLighterAlt: DefaultPalette.neutralLighterAlt,
+      neutralLighter: DefaultPalette.neutralLighter,
+      neutralLight: DefaultPalette.neutralLight,
+      neutralQuaternaryAlt: DefaultPalette.neutralQuaternaryAlt,
+      neutralQuaternary: DefaultPalette.neutralQuaternary,
+      neutralTertiaryAlt: DefaultPalette.neutralTertiaryAlt,
+      neutralTertiary: DefaultPalette.neutralTertiary,
+      neutralSecondary: DefaultPalette.neutralSecondary,
+      neutralPrimaryAlt: DefaultPalette.neutralPrimaryAlt,
+      neutralPrimary: DefaultPalette.neutralPrimary,
+      neutralDark: DefaultPalette.neutralDark,
+      black: DefaultPalette.black,
+      white: DefaultPalette.white,
+    },
+  });
+
+  const darkTheme = createTheme({
+    palette: {
+      themePrimary: "#0078d4",
+      themeLighterAlt: "#00060a",
+      themeLighter: "#001828",
+      themeLight: "#002d4a",
+      themeTertiary: "#005a95",
+      themeSecondary: "#0083d8",
+      themeDarkAlt: "#1890f1",
+      themeDark: "#3aa0f2",
+      themeDarker: "#6abef5",
+      neutralLighterAlt: "#2a2a2a",
+      neutralLighter: "#333333",
+      neutralLight: "#414141",
+      neutralQuaternaryAlt: "#4a4a4a",
+      neutralQuaternary: "#515151",
+      neutralTertiaryAlt: "#6f6f6f",
+      neutralTertiary: "#c8c8c8",
+      neutralSecondary: "#d0d0d0",
+      neutralPrimaryAlt: "#dadada",
+      neutralPrimary: "#ffffff",
+      neutralDark: "#f4f4f4",
+      black: "#f8f8f8",
+      white: "#1b1b1b",
+    },
+  });
 
   return (
     <>
@@ -104,59 +167,68 @@ export const App: React.FunctionComponent = () => {
                     }
                     updateResource={createFormResource.updateResource}
                   />
-                  <Stack styles={stackStyles} className="tre-root">
-                    <Stack.Item grow className="tre-top-nav">
-                      <TopNav />
-                    </Stack.Item>
-                    <Stack.Item grow={100} className="tre-body">
-                      <GenericErrorBoundary>
-                        <CostsContext.Provider
-                          value={{
-                            loadingState: costsLoadingState,
-                            costs: costs,
-                            setCosts: (costs: Array<CostResource>) => {
-                              setCosts(costs);
-                            },
-                            setLoadingState: (loadingState: LoadingState) => {
-                              setCostsLoadingState(loadingState);
-                            },
-                          }}
-                        >
-                          <Routes>
-                            <Route path="*" element={<RootLayout />} />
-                            <Route
-                              path="/workspaces/:workspaceId//*"
-                              element={
-                                <WorkspaceContext.Provider
-                                  value={{
-                                    roles: workspaceRoles,
-                                    setRoles: (roles: Array<string>) => {
-                                      setWorkspaceRoles(roles);
-                                    },
-                                    costs: workspaceCosts,
-                                    setCosts: (costs: Array<CostResource>) => {
-                                      setWorkspaceCosts(costs);
-                                    },
-                                    workspace: selectedWorkspace,
-                                    setWorkspace: (w: Workspace) => {
-                                      setSelectedWorkspace(w);
-                                    },
-                                    workspaceApplicationIdURI:
-                                      selectedWorkspace.properties?.scope_id,
-                                  }}
-                                >
-                                  <WorkspaceProvider />
-                                </WorkspaceContext.Provider>
-                              }
-                            />
-                          </Routes>
-                        </CostsContext.Provider>
-                      </GenericErrorBoundary>
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <Footer />
-                    </Stack.Item>
-                  </Stack>
+                  <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+                    <Stack styles={stackStyles} className="tre-root">
+                      <Stack.Item grow className="tre-top-nav">
+                        <TopNav />
+                        <DarkModeToggle
+                          onChange={setIsDarkMode}
+                          checked={isDarkMode}
+                          size={60}
+                        />
+                      </Stack.Item>
+                      <Stack.Item grow={100} className="tre-body">
+                        <GenericErrorBoundary>
+                          <CostsContext.Provider
+                            value={{
+                              loadingState: costsLoadingState,
+                              costs: costs,
+                              setCosts: (costs: Array<CostResource>) => {
+                                setCosts(costs);
+                              },
+                              setLoadingState: (loadingState: LoadingState) => {
+                                setCostsLoadingState(loadingState);
+                              },
+                            }}
+                          >
+                            <Routes>
+                              <Route path="*" element={<RootLayout />} />
+                              <Route
+                                path="/workspaces/:workspaceId//*"
+                                element={
+                                  <WorkspaceContext.Provider
+                                    value={{
+                                      roles: workspaceRoles,
+                                      setRoles: (roles: Array<string>) => {
+                                        setWorkspaceRoles(roles);
+                                      },
+                                      costs: workspaceCosts,
+                                      setCosts: (
+                                        costs: Array<CostResource>,
+                                      ) => {
+                                        setWorkspaceCosts(costs);
+                                      },
+                                      workspace: selectedWorkspace,
+                                      setWorkspace: (w: Workspace) => {
+                                        setSelectedWorkspace(w);
+                                      },
+                                      workspaceApplicationIdURI:
+                                        selectedWorkspace.properties?.scope_id,
+                                    }}
+                                  >
+                                    <WorkspaceProvider />
+                                  </WorkspaceContext.Provider>
+                                }
+                              />
+                            </Routes>
+                          </CostsContext.Provider>
+                        </GenericErrorBoundary>
+                      </Stack.Item>
+                      <Stack.Item grow>
+                        <Footer />
+                      </Stack.Item>
+                    </Stack>
+                  </ThemeProvider>
                 </CreateUpdateResourceContext.Provider>
               </AppRolesContext.Provider>
             </MsalAuthenticationTemplate>
