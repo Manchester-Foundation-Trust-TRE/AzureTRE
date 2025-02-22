@@ -3,19 +3,21 @@ import { getTheme, Icon, mergeStyles, Stack, Toggle } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { UserMenu } from "./UserMenu";
 import { NotificationPanel } from "./notifications/NotificationPanel";
+import DarkModeToggle from "react-dark-mode-toggle";
 
-interface TopNavProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
 
-export const TopNav: React.FunctionComponent<TopNavProps> = ({
-  darkMode,
-  toggleDarkMode,
-}) => {
+export const TopNav: React.FunctionComponent = () => {
+  const [isDarkMode, setIsDarkMode] = React.useState(
+    () => localStorage.getItem("darkMode") === "true"
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem("darkMode", isDarkMode.toString());
+  }, [isDarkMode]);
+
   return (
     <>
-      <div className={contentClass}>
+      <div className={`${contentClass} ${isDarkMode ? "dark-mode" : ""}`}>
         <Stack horizontal>
           <Stack.Item grow={100}>
             <Link to="/" className="tre-home-link">
@@ -34,11 +36,10 @@ export const TopNav: React.FunctionComponent<TopNavProps> = ({
             <NotificationPanel />
           </Stack.Item>
           <Stack.Item>
-            <Toggle
-              label="Dark mode"
-              checked={darkMode}
-              onChange={toggleDarkMode}
-              styles={toggleStyles}
+            <DarkModeToggle
+              onChange={setIsDarkMode}
+              checked={isDarkMode}
+              size={60}
             />
           </Stack.Item>
           <Stack.Item grow>
