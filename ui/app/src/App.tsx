@@ -71,6 +71,7 @@ export const App: React.FunctionComponent = () => {
 
   useEffect(() => initializeFileTypeIcons(), []);
 
+
   useEffect(() => {
     localStorage.setItem("darkMode", isDarkMode.toString());
   }, [isDarkMode]);

@@ -438,3 +438,24 @@ input[readonly].dark-mode {
 .field span.ms-Checkbox-text {
   font-style: normal;
 }
+
+/* Dark mode styles */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #6200ee;
+}
+
+body.dark-mode {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.tre-top-nav.dark-mode {
+  background-color: var(--primary-color);
+}
+
+.tre-body-content.dark-mode {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

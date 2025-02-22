@@ -35,3 +35,20 @@ export const destructiveButtonStyles = {
     color: palette.white,
   },
 };
+
+// Dark mode styles
+export const darkModeButtonStyles = {
+  root: {
+    background: palette.neutralPrimary,
+    color: palette.white,
+    borderColor: palette.neutralPrimary,
+  },
+  rootDisabled: {
+    background: "rgb(96 94 92 / 60%)",
+    color: palette.white,
+    borderColor: palette.neutralPrimary,
+  },
+  iconDisabled: {
+    color: palette.white,
+  },
+};

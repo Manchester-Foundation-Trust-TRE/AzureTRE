@@ -1,9 +1,10 @@
 import React from "react";
-import { getTheme, Icon, mergeStyles, Stack } from "@fluentui/react";
+import { getTheme, Icon, mergeStyles, Stack, Toggle } from "@fluentui/react";
 import { Link } from "react-router-dom";
 import { UserMenu } from "./UserMenu";
 import { NotificationPanel } from "./notifications/NotificationPanel";
 import DarkModeToggle from "react-dark-mode-toggle";
+
 
 export const TopNav: React.FunctionComponent = () => {
   const [isDarkMode, setIsDarkMode] = React.useState(
@@ -59,3 +60,12 @@ const contentClass = mergeStyles([
     padding: "0 10px 0 10px",
   },
 ]);
+
+const toggleStyles = {
+  root: {
+    marginRight: 10,
+  },
+  label: {
+    color: theme.palette.white,
+  },
+};
