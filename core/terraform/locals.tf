@@ -65,4 +65,7 @@ locals {
   kv_network_default_action        = var.private_agent_subnet_id != "" ? "Deny" : "Allow" # Deny if private agent subnet is defined, Allow otherwise for public deployment. This will be changed to "Deny" later in trap kv_remove_network_exception
   kv_network_bypass                = "AzureServices"
   private_agent_subnet_id          = var.private_agent_subnet_id
+
+  topic_name_suffix = "v2-${var.tre_id}"
+  vault_secret_near_expiry_topic_name    = "evgt-keyvault-near-expiry-${local.topic_name_suffix}"
 }

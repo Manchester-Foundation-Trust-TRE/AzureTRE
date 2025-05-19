@@ -58,6 +58,13 @@ resource "azurerm_servicebus_queue" "workspacequeue" {
   requires_session     = true # use sessions here to make sure updates to each resource happen in serial, in order
 }
 
+resource "azurerm_servicebus_queue" "keyvault_rotation_queue" {
+  name         = "keyvaultrotation"
+  namespace_id = azurerm_servicebus_namespace.sb.id
+  partitioning_enabled = false
+  requires_session     = true 
+}
+
 resource "azurerm_servicebus_queue" "service_bus_deployment_status_update_queue" {
   name         = "deploymentstatus"
   namespace_id = azurerm_servicebus_namespace.sb.id

@@ -153,3 +153,65 @@ resource "azurerm_monitor_diagnostic_setting" "kv" {
 
   lifecycle { ignore_changes = [log_analytics_destination_type] }
 }
+
+resource "azurerm_eventgrid_system_topic" "rotate_secrets" {
+  name                          = local.vault_secret_near_expiry_topic_name
+  location                      = azurerm_resource_group.core.location
+  resource_group_name           = azurerm_resource_group.core.name
+  public_network_access_enabled = var.enable_local_debugging
+  local_auth_enabled            = false
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+    tags = merge(local.tre_core_tags, {
+    Publishers = "KeyVault - NearExpiry;"
+  })
+
+  inbound_ip_rule = var.enable_local_debugging ? [{
+    ip_mask = var.myip
+    action  = "Allow"
+  }] : null
+
+  lifecycle { ignore_changes = [tags] }
+
+  depends_on = [
+    azurerm_servicebus_namespace.sb
+    azurerm_key_vault.kv
+  ]
+}
+
+resource "azurerm_role_assignment" "servicebus_sender_rotate_secrets" {
+  scope                     = azurerm_servicebus_namespace.sb.id 
+  role_definition_name      = "Azure Service Bus Data Sender"
+  principal_id              = azurerm_eventgrid_system_topic.rotate_secrets.identity[0].principal_id
+
+  depends_on = [
+    azurerm_eventgrid_system_topic.rotate_secrets
+    azurerm_servicebus_namespace.sb
+    azurerm_key_vault.kv
+  ]
+}
+
+resource "azurerm_private_endpoint" "eventgrid_rotate_secrets" {
+  name                              = "pe-eg-rotate_secrets-${var.tre_id}"
+  location                          = azurerm_resource_group.core.location
+  resource_group_name               = azurerm_resource_group.core.name
+  subnet_id                         = module.network.shared_subnet_id
+  tags                              = local.tre_core_tags 
+
+  lifecycle { ignore_changes = [tags] }
+
+  private_dns_zone_group {
+    name                            = "private-dns-zone-group"
+    private_dns_zone_ids            = [module.network.eventgrid_private_dns_zone_id]
+  }
+
+  private_service_connection {
+    name                           = "pcs-eg-${var.tre_id}"
+    private_connection_resource_id = azurerm_eventgrid_system_topic.rotate_secrets.id
+    is_manual_connection           = false
+    subresource_names              = ["topic"]
+  }
+}
