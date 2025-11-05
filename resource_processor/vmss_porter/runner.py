@@ -173,7 +173,7 @@ async def invoke_porter_action(msg_body: dict, sb_client: ServiceBusClient, conf
 
     # post an update message to set the status to an 'in progress' one
     resource_request_message = service_bus_message_generator(msg_body, statuses.in_progress_status_string_for[action], "Job starting")
-    await sb_sender.send_messages(ServiceBusMessage(body=resource_request_message, correlation_id=msg_body["id"], session_id=msg_body["operationId"]))
+    await sb_sender.send_messages(ServiceBusMessage(body=resource_request_message, correlation_id=msg_body["id"], session_id=msg_body["id"]))
     logger.info(f'Sent status message for {installation_id} - {statuses.in_progress_status_string_for[action]} - Job starting')
 
     # Build and run porter command (flagging if its a built-in action or custom so we can adapt porter command appropriately)
@@ -237,7 +237,7 @@ async def invoke_porter_action(msg_body: dict, sb_client: ServiceBusClient, conf
 
         resource_request_message = service_bus_message_generator(msg_body, status_for_sb_message, status_message, outputs)
 
-    await sb_sender.send_messages(ServiceBusMessage(body=resource_request_message, correlation_id=msg_body["id"], session_id=msg_body["operationId"]))
+    await sb_sender.send_messages(ServiceBusMessage(body=resource_request_message, correlation_id=msg_body["id"], session_id=msg_body["id"]))
     logger.info(f"Sent status message for {installation_id}: {status_for_sb_message}")
 
     # return true as want to continue processing the message

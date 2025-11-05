@@ -175,6 +175,38 @@ async def test_invoke_porter_action(mock_service_bus_message_generator, mock_run
 
 
 @pytest.mark.asyncio
+@patch("vmss_porter.runner.build_porter_command", return_value=["porter install"])
+@patch("vmss_porter.runner.run_porter", return_value=(0, "stdout", "stderr"))
+@patch("vmss_porter.runner.service_bus_message_generator", return_value="test_message")
+@patch("vmss_porter.runner.ServiceBusMessage")
+async def test_invoke_porter_action_session_id_uses_resource_id(mock_service_bus_message, mock_service_bus_message_generator, mock_run_porter, mock_build_porter_command, mock_service_bus_client):
+    """Test that status update messages use resource ID as session_id, not operation ID."""
+    from azure.servicebus import ServiceBusMessage as RealServiceBusMessage
+    
+    mock_sb_sender = AsyncMock()
+    mock_service_bus_client.get_queue_sender.return_value = mock_sb_sender
+
+    config = {"deployment_status_queue": "test_queue"}
+    resource_id = "test_resource_id"
+    operation_id = "test_operation_id"
+    msg_body = {"id": resource_id, "action": "install", "stepId": "test_step_id", "operationId": operation_id}
+
+    result = await invoke_porter_action(msg_body, mock_service_bus_client, config)
+
+    assert result is True
+    
+    # Verify that ServiceBusMessage was called twice (once for "in progress", once for completion)
+    assert mock_service_bus_message.call_count == 2
+    
+    # Verify both calls used resource_id as session_id, not operation_id
+    for call in mock_service_bus_message.call_args_list:
+        kwargs = call[1]
+        assert kwargs["session_id"] == resource_id, f"Expected session_id to be {resource_id}, but got {kwargs['session_id']}"
+        assert kwargs["session_id"] != operation_id, f"session_id should not be operation_id ({operation_id})"
+        assert kwargs["correlation_id"] == resource_id
+
+
+@pytest.mark.asyncio
 @patch("vmss_porter.runner.build_porter_command", return_value=[["porter", "install"]])
 @patch("vmss_porter.runner.run_porter", return_value=(1, "", "error"))
 @patch("vmss_porter.runner.service_bus_message_generator", return_value="test_message")
