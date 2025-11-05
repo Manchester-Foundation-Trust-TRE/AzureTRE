@@ -181,8 +181,6 @@ async def test_invoke_porter_action(mock_service_bus_message_generator, mock_run
 @patch("vmss_porter.runner.ServiceBusMessage")
 async def test_invoke_porter_action_session_id_uses_resource_id(mock_service_bus_message, mock_service_bus_message_generator, mock_run_porter, mock_build_porter_command, mock_service_bus_client):
     """Test that status update messages use resource ID as session_id, not operation ID."""
-    from azure.servicebus import ServiceBusMessage as RealServiceBusMessage
-    
     mock_sb_sender = AsyncMock()
     mock_service_bus_client.get_queue_sender.return_value = mock_sb_sender
 
