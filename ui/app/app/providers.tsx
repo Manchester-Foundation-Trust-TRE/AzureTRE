@@ -34,7 +34,7 @@ export function Providers({ children }: { children: ReactNode }) {
   }, []);
 
   if (!pca) {
-    return <div>Loading...</div>;
+    return <div aria-label="Loading application">Loading...</div>;
   }
 
   return (

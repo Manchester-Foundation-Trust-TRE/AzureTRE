@@ -3,14 +3,16 @@ import { Configuration, PublicClientApplication } from "@azure/msal-browser";
 // Lazy initialization of MSAL to ensure it only runs on client
 let pca: PublicClientApplication | null = null;
 
-export const getPca = () => {
+export const getPca = (): PublicClientApplication | null => {
   if (typeof window === 'undefined') {
-    // Return a mock object during SSR
-    return null as any;
+    // Return null during SSR
+    return null;
   }
 
   if (!pca) {
     // Dynamically import config only on client
+    // Using require here since this code only runs in browser
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const config = require("./config.json");
     
     const configuration: Configuration = {
@@ -27,6 +29,3 @@ export const getPca = () => {
 
   return pca;
 };
-
-// Export for backwards compatibility
-export { pca };

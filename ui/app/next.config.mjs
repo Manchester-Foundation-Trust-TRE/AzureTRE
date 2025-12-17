@@ -11,7 +11,7 @@ const nextConfig = {
   reactStrictMode: true,
   // Preserve existing TypeScript paths
   typescript: {
-    // Do not fail build on TS errors initially during migration
+    // Fail build on TS errors to maintain code quality
     ignoreBuildErrors: false,
   },
 };
