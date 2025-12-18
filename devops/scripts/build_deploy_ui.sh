@@ -25,10 +25,10 @@ jq --arg rootClientId "${SWAGGER_UI_CLIENT_ID}" \
   --arg uiFooterText "${UI_FOOTER_TEXT:-}" \
   '.rootClientId = $rootClientId | .rootTenantId = $rootTenantId | .treApplicationId = $treApplicationId | .treUrl = $treUrl | .treId = $treId | .version = $version | .activeDirectoryUri = $activeDirectoryUri | .userManagementEnabled = $userManagementEnabled | .uiSiteName = $uiSiteName | .uiFooterText = $uiFooterText' ./src/config.source.json > ./src/config.json
 
-# build and deploy the app
+# build and deploy the app (Next.js outputs to 'out' directory for static export)
 yarn install
 yarn build
 
 popd
 
-CONTENT_DIR="$DIR/../../ui/app/dist" "$DIR/upload_static_web.sh"
+CONTENT_DIR="$DIR/../../ui/app/out" "$DIR/upload_static_web.sh"

@@ -1,0 +1,4 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier"],
+  "ignorePatterns": [".next/**", "out/**", "node_modules/**", "vite.config.ts"]
+}

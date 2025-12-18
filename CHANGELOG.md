@@ -3,8 +3,10 @@
 **BREAKING CHANGES**
 * Fix missing arguments for airlock manager requests - change in API contract  ([#4544](https://github.com/microsoft/AzureTRE/issues/4544))
 * Clarify cost label time period and aggregation scope in UI tooltips ([#4607](https://github.com/microsoft/AzureTRE/pull/4607))
+* UI: Migrated from Vite to Next.js for improved performance and modern development experience
 
 ENHANCEMENTS:
+* UI: Migrate web UI from Vite to Next.js with static export for Azure Storage deployment
 * Upgrade Guacamole to v1.6.0 with Java 17 and other security updates ([#4754](https://github.com/microsoft/AzureTRE/pull/4754))
 * API: Replace HTTP_422_UNPROCESSABLE_ENTITY response with HTTP_422_UNPROCESSABLE_CONTENT as per RFC 9110 ([#4742](https://github.com/microsoft/AzureTRE/issues/4742))
 * Change Group.ReadWrite.All permission to Group.Create for AUTO_WORKSPACE_GROUP_CREATION ([#4772](https://github.com/microsoft/AzureTRE/issues/4772))
@@ -21,6 +23,8 @@ BUG FIXES:
 * Fix missing metastoreDomains for Databricks, which caused metastore outages for some domains ([#4779](https://github.com/microsoft/AzureTRE/issues/4779))
 
 COMPONENTS:
+* ui | 0.9.0 |
+
 
 ## 0.26.0 (October 12, 2025)
 **BREAKING CHANGES**
