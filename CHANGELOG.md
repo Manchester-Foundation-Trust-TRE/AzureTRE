@@ -19,6 +19,7 @@ BUG FIXES:
 * Fix firewall application rule validation error when description is empty string ([#4691](https://github.com/microsoft/AzureTRE/issues/4691))
 * Fix R configuration with incorrect quotes preventing package installation on Linux VMs ([#4657](https://github.com/microsoft/AzureTRE/issues/4657))
 * Fix missing metastoreDomains for Databricks, which caused metastore outages for some domains ([#4779](https://github.com/microsoft/AzureTRE/issues/4779))
+* Ensure Service Bus async clients are properly closed in API status updaters to prevent unclosed client session errors.
 
 COMPONENTS:
 
@@ -1594,4 +1595,3 @@ FEATURES:
 * Centrally manage the firewall share service state to enable other services to ask for rule changes
 
 Many more enhancements are listed on the [release page](https://github.com/microsoft/AzureTRE/releases/tag/v0.4)
-
