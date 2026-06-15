@@ -269,7 +269,12 @@ class AzureADAuthorization(AccessService):
         roles = []
         for role_assignment in roles_graph_data["value"]:
             if role_assignment["principalId"] == user_id:
-                roles.append(Role(id=role_assignment["appRoleId"], displayName=app_id_to_role_name[role_assignment["appRoleId"]]))
+                app_role_id = role_assignment["appRoleId"]
+                # Skip the null GUID (00000000-0000-0000-0000-000000000000) which represents
+                # a default/unspecified role assignment in Azure AD and has no named role.
+                if app_role_id not in app_id_to_role_name:
+                    continue
+                roles.append(Role(id=app_role_id, displayName=app_id_to_role_name[app_role_id]))
         return roles
 
     def _get_users_inc_groups_from_response(self, users_graph_data, roles_graph_data, app_id_to_role_name) -> List[AssignedUser]:

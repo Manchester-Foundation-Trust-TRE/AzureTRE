@@ -11,6 +11,7 @@ ENHANCEMENTS:
 * Make workspace shared storage quota updateable ([#4314](https://github.com/microsoft/AzureTRE/issues/4314))
 
 BUG FIXES:
+* Fix KeyError on null GUID app role assignment when creating airlock draft request ([#4780](https://github.com/microsoft/AzureTRE/issues/4780))
 * Fix circular dependancy in base workspace. ([#4756](https://github.com/microsoft/AzureTRE/pull/4756))
 * Replaced deprecated `datetime.utcnow()` with `datetime.now(datetime.UTC)` in the API and airlock processor. ([#4743](https://github.com/microsoft/AzureTRE/issues/4743))
 * Disable public access on stweb storage account ([#4766](https://github.com/microsoft/AzureTRE/issues/4766))
