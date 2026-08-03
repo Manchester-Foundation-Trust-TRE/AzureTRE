@@ -12,13 +12,13 @@
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://microsoft.github.io/AzureTRE/unreleased/tre-developers/ui/">
+        <link rel="canonical" href="https://microsoft.github.io/AzureTRE/unreleased/tre-developers/ui-testing/">
       
       
-        <link rel="prev" href="../api-permissions-map/">
+        <link rel="prev" href="../ui/">
       
       
-        <link rel="next" href="../ui-testing/">
+        <link rel="next" href="../resource-processor/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>UI - Azure TRE</title>
+        <title>UI Testing - Azure TRE</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tre-web-user-interface" class="md-skip">
+        <a href="#ui-testing" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UI
+              UI Testing
             
           </span>
         </div>
@@ -3555,6 +3555,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -3574,7 +3602,7 @@
   <span class="md-ellipsis">
     
   
-    UI
+    UI Testing
   
 
     
@@ -3592,7 +3620,7 @@
   <span class="md-ellipsis">
     
   
-    UI
+    UI Testing
   
 
     
@@ -3618,22 +3646,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chosen-ui-stack-components" class="md-nav__link">
+  <a href="#testing-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chosen UI Stack + Components
+        Testing Stack
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Chosen UI Stack + Components">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#folder-structure" class="md-nav__link">
+  <a href="#vitest-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Folder structure
+        Vitest Configuration
       
     </span>
   </a>
@@ -3641,32 +3680,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#authn-authz" class="md-nav__link">
+  <a href="#test-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AuthN + AuthZ
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#react-contexts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        React Contexts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Hooks
+        Test Setup
       
     </span>
   </a>
@@ -3679,44 +3696,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+  <a href="#writing-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment
+        Writing Tests
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run the UI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Available Scripts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Available Scripts">
+    <nav class="md-nav" aria-label="Writing Tests">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#npm-start" class="md-nav__link">
+  <a href="#component-testing-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm start
+        Component Testing Best Practices
       
     </span>
   </a>
@@ -3724,10 +3719,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-test" class="md-nav__link">
+  <a href="#example-test-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm test
+        Example Test Structure
       
     </span>
   </a>
@@ -3735,10 +3730,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-run-build" class="md-nav__link">
+  <a href="#mocking-fluentui-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm run build
+        Mocking FluentUI Components
       
     </span>
   </a>
@@ -3746,43 +3741,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-run-serve" class="md-nav__link">
+  <a href="#testing-async-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm run serve
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-testcoverage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run test:coverage
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-lint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run lint
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run format
+        Testing Async Operations
       
     </span>
   </a>
@@ -3795,10 +3757,210 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
+  <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Testing
+        Running Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-testing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Testing Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Testing Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-custom-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Custom Hooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Forms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-error-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Error Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-debug-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Debug Utilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuous Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
       
     </span>
   </a>
@@ -3809,34 +3971,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ui-testing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    UI Testing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -4661,22 +4795,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#chosen-ui-stack-components" class="md-nav__link">
+  <a href="#testing-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Chosen UI Stack + Components
+        Testing Stack
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Chosen UI Stack + Components">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#folder-structure" class="md-nav__link">
+  <a href="#vitest-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Folder structure
+        Vitest Configuration
       
     </span>
   </a>
@@ -4684,32 +4829,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#authn-authz" class="md-nav__link">
+  <a href="#test-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AuthN + AuthZ
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#react-contexts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        React Contexts
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-hooks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Hooks
+        Test Setup
       
     </span>
   </a>
@@ -4722,44 +4845,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+  <a href="#writing-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment
+        Writing Tests
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run the UI
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Available Scripts
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Available Scripts">
+    <nav class="md-nav" aria-label="Writing Tests">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#npm-start" class="md-nav__link">
+  <a href="#component-testing-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm start
+        Component Testing Best Practices
       
     </span>
   </a>
@@ -4767,10 +4868,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-test" class="md-nav__link">
+  <a href="#example-test-structure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm test
+        Example Test Structure
       
     </span>
   </a>
@@ -4778,10 +4879,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-run-build" class="md-nav__link">
+  <a href="#mocking-fluentui-components" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm run build
+        Mocking FluentUI Components
       
     </span>
   </a>
@@ -4789,43 +4890,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#npm-run-serve" class="md-nav__link">
+  <a href="#testing-async-operations" class="md-nav__link">
     <span class="md-ellipsis">
       
-        npm run serve
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-testcoverage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run test:coverage
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-lint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run lint
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#npm-run-format" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        npm run format
+        Testing Async Operations
       
     </span>
   </a>
@@ -4838,10 +4906,210 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#testing" class="md-nav__link">
+  <a href="#running-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Testing
+        Running Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Scripts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coverage-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coverage Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Organization
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Organization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File Structure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#naming-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Naming Conventions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-testing-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Testing Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Testing Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing-custom-hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Custom Hooks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-forms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Forms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-error-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing Error Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#useful-debug-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Useful Debug Utilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continuous Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources
       
     </span>
   </a>
@@ -4865,85 +5133,274 @@
 
 
 
-<h1 id="tre-web-user-interface">TRE Web User Interface</h1>
-<p>This project contains a React-based web UI which covers the core aspects of a TRE, for researchers and workspace owners.</p>
-<h2 id="chosen-ui-stack-components">Chosen UI Stack + Components</h2>
-<p>The UI is built upon several popular web frameworks:
-- React v18 (with Vite)
-  - Typescript
-  - React Router v6 for client side routing
-- Fluent UI <a href="https://developer.microsoft.com/en-us/fluentui#/controls/web">Fluent UI Docs</a>
-- MSAL v2: Microsoft Entra ID authentication <a href="https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react">msal-react docs</a></p>
-<h3 id="folder-structure">Folder structure</h3>
-<div class="highlight"><pre><span></span><code>ui
-├── app                    - Root of the React application
-│   ├── build              - Location of compiled files after build process
-│   ├── public             - Location for static HTML to bootstrap the app
-│   ├── src                - All .tsx components
-│   ├── index.tsx          - Entry point for the app
-│   ├── App.tsx            - Wrapper and routing for the app
-│   └── config.source.json - JSON file to be used as source file for autogenerated config
-</code></pre></div>
-<h3 id="authn-authz">AuthN + AuthZ</h3>
-<p>For further details on the auth setup, see <a href="../../tre-admins/auth/">Auth</a>.</p>
-<p>As stated above, Microsoft Entra ID is used for Authentication and Authorization. There are 3 Microsoft Entra ID apps involved here:
-- <strong>TRE UX</strong>. This is the app that the user authenticates against. Once authenticated, the client will request an access token for the <code>TRE Api</code>.
-- <strong>TRE Api</strong>. In the access token response from this app we get the user's role membership for TRE-level roles (<code>TREAdmin</code> / <code>TREUser</code>). Based on these role memberships, aspects of the UI will be made available. If the user is in a <code>TREAdmin</code> role, they will see buttons to create workspaces for instance.
-When the user navigates into a Workspace, the client will request an access token for that <code>Workspace App</code>.
-- <strong>Workspace App(s)</strong>. Each TRE workspace will have a workspace app registration. The Application Id URI for each workspace app is stored in the Workspace resource object in Cosmos, and the client uses this URI to gain an access token for that particular workspace.</p>
-<p>Workspace app registrations may be reused across multiple workspaces in development scenarios.
-From this access token we can find the Workspace-level roles the user is in (<code>WorkspaceOwner</code> / <code>WorkspaceResearcher</code>). These are in turn used to show/hide features of the UI.</p>
-<h3 id="react-contexts">React Contexts</h3>
-<p>The React Context API is a clean way to handle a limited amount of global state, and is used for a few scenarios in this project:
-- TRE Roles Context: A context provides details of the base TRE roles a user is in, which can be consumed anywhere throughout the app
-- Workspace Context: Tracks the currently selected Workspace, and the roles the user is in for that Workspace. This context is used for nested components to be able to authenticate against the correct Microsoft Entra ID App via <code>workspaceCtx.workspaceApplicationIdURI</code>.
-- Create Form Context: A context to control the Create / Update form behaviour.
-- Notifications Context: Tracks all the in-progress operations currently running. For each operation, the Notifications panel also uses this context to broadcast Component 'actions' which are subscribed to by downstream components. This way, a resource component does not have to track it's own changes, and can be 'told' by the Notifications Context whether it should refresh / lock etc.</p>
-<h3 id="custom-hooks">Custom Hooks</h3>
-<p>Hooks are used throughout the project, and a couple of custom hooks were written to abstract common logic:
-- <code>useAuthApiCall</code>: A way to encapsulate an authenticated <code>fetch</code> request and provide a simple interface for downstream components to use.
-- <code>useComponentManager</code>: This hook subscribes to changes broadcast from the Notifications panel, via the context. A component can simply add this hook to start subscribing to changes and react accordingly.</p>
-<h2 id="deployment">Deployment</h2>
-<p>The UI is deployed as part of the <code>tre-deploy</code> make target (unless you set <code>deploy_ui=false</code> under tre defaults section in your <code>config.yaml</code> file).</p>
-<p>To re-deploy <em>just</em> the UI (after an initial deploy), run <code>make build-and-deploy-ui</code> from the root of the dev container. This will:
-- Use the environment variables from your deployment to create a <code>config.json</code> file for the UI
-- Build the source code, via <code>npm run build</code>
-- Deploy the code to Azure blob storage, where it will be statically served behind the App Gateway that also fronts the API.</p>
-<h2 id="run-the-ui">Run the UI</h2>
+<h1 id="ui-testing">UI Testing</h1>
+<p>The Azure TRE UI uses a testing framework to ensure component reliability and maintainability. This document covers the testing setup, best practices, and how to write and run tests.</p>
+<h2 id="testing-stack">Testing Stack</h2>
+<p>The UI testing framework consists of:</p>
 <ul>
-<li>Ensure <code>deploy_ui=false</code> is not set in your <code>./config.yaml</code> file</li>
-<li>In the root of the repo, run <code>make tre-deploy</code>. This will provision the necessary resources in Azure, build and deploy the UI to Azure blob storage, behind the App Gateway used for the API. The deployment process will also create the necessary <code>config.json</code>, using the <code>config.source.json</code> as a template.</li>
-<li>In Microsoft Entra ID, locate the TRE Client Apps app (possibly called Swagger App). In the Authentication section add reply URIs for:<ul>
-<li><code>http://localhost:3000</code> (if wanting to run locally)</li>
-<li>Your deployed App Url - <code>https://{TRE_ID}.{LOCATION}.cloudapp.azure.com</code>.</li>
+<li><strong>Vitest</strong>: Modern test runner with native TypeScript support and fast execution</li>
+<li><strong>React Testing Library</strong>: Testing utilities focused on testing components as users interact with them</li>
+<li><strong>JSDOM</strong>: DOM implementation for Node.js environments</li>
+<li><strong>@testing-library/jest-dom</strong>: Custom Jest matchers for DOM assertions</li>
+<li><strong>V8 Coverage</strong>: Code coverage reporting</li>
 </ul>
-</li>
+<h2 id="test-configuration">Test Configuration</h2>
+<h3 id="vitest-configuration">Vitest Configuration</h3>
+<p>Tests are configured in <code>vite.config.ts</code> with the following key settings:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">globals</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">environment</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jsdom&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">setupFiles</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;./src/setupTests.ts&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">provider</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;v8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">reporter</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;html&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;lcov&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nx">thresholds</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nb">global</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">branches</span><span class="o">:</span><span class="w"> </span><span class="kt">80</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">functions</span><span class="o">:</span><span class="w"> </span><span class="kt">80</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">lines</span><span class="o">:</span><span class="w"> </span><span class="kt">80</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">statements</span><span class="o">:</span><span class="w"> </span><span class="kt">80</span><span class="p">,</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="test-setup">Test Setup</h3>
+<p>The <code>setupTests.ts</code> file configures:
+- Global test utilities and matchers
+- Mocks for browser APIs (ResizeObserver, IntersectionObserver, matchMedia)
+- Crypto API mocks for MSAL authentication
+- FluentUI initialization and icon registration</p>
+<h2 id="writing-tests">Writing Tests</h2>
+<h3 id="component-testing-best-practices">Component Testing Best Practices</h3>
+<ol>
+<li><strong>Test User Interactions</strong>: Focus on how users interact with components rather than implementation details</li>
+<li><strong>Use Semantic Queries</strong>: Prefer <code>getByRole</code>, <code>getByLabelText</code>, and <code>getByText</code> over <code>getByTestId</code></li>
+<li><strong>Mock External Dependencies</strong>: Mock FluentUI components, API calls, and browser APIs</li>
+<li><strong>Test Accessibility</strong>: Ensure components are accessible and work with screen readers</li>
+</ol>
+<h3 id="example-test-structure">Example Test Structure</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">describe</span><span class="p">,</span><span class="w"> </span><span class="nx">it</span><span class="p">,</span><span class="w"> </span><span class="nx">expect</span><span class="p">,</span><span class="w"> </span><span class="nx">vi</span><span class="p">,</span><span class="w"> </span><span class="nx">beforeEach</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;vitest&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">render</span><span class="p">,</span><span class="w"> </span><span class="nx">screen</span><span class="p">,</span><span class="w"> </span><span class="nx">fireEvent</span><span class="p">,</span><span class="w"> </span><span class="nx">waitFor</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;@testing-library/react&quot;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">YourComponent</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./YourComponent&quot;</span><span class="p">;</span>
+
+<span class="c1">// Mock external dependencies</span>
+<span class="nx">vi</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s2">&quot;@fluentui/react&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="c1">// Mock FluentUI components</span>
+<span class="p">}));</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;YourComponent&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">beforeEach</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">vi</span><span class="p">.</span><span class="nx">clearAllMocks</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;renders correctly&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">YourComponent</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&quot;Expected Text&quot;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;handles user interactions&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">YourComponent</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">button</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Click me&quot;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">fireEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">button</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">waitFor</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&quot;Button clicked&quot;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="mocking-fluentui-components">Mocking FluentUI Components</h3>
+<p>Due to FluentUI's complexity and testing environment limitations, components are typically mocked:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">vi</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s2">&quot;@fluentui/react&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">vi</span><span class="p">.</span><span class="nx">importActual</span><span class="p">(</span><span class="s2">&quot;@fluentui/react&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">actual</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">Stack</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="p">,</span><span class="w"> </span><span class="nx">horizontal</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;stack&quot;</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">horizontal</span><span class="o">=</span><span class="p">{</span><span class="nx">horizontal</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">children</span><span class="p">}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">    </span><span class="nx">IconButton</span><span class="o">:</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">iconProps</span><span class="p">,</span><span class="w"> </span><span class="nx">onClick</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="nx">any</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">-</span><span class="nx">testid</span><span class="o">=</span><span class="s2">&quot;icon-button&quot;</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">-</span><span class="nx">icon</span><span class="o">-</span><span class="nx">name</span><span class="o">=</span><span class="p">{</span><span class="nx">iconProps</span><span class="o">?</span><span class="p">.</span><span class="nx">iconName</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onClick</span><span class="p">}</span>
+<span class="w">      </span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">iconProps</span><span class="o">?</span><span class="p">.</span><span class="nx">iconName</span><span class="p">}</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="p">),</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="testing-async-operations">Testing Async Operations</h3>
+<p>For components with async operations (API calls, timers):</p>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;handles async operations&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">AsyncComponent</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// Trigger async operation</span>
+<span class="w">  </span><span class="nx">fireEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s2">&quot;button&quot;</span><span class="p">));</span>
+
+<span class="w">  </span><span class="c1">// Wait for operation to complete</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">waitFor</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="running-tests">Running Tests</h2>
+<h3 id="development-commands">Development Commands</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Change directory</span>
+<span class="nb">cd</span><span class="w"> </span>ui/app
+
+<span class="c1"># Run tests in watch mode (waits for file changes)</span>
+npm<span class="w"> </span><span class="nb">test</span>
+
+<span class="c1"># Run tests in run mode</span>
+npm<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--run
+
+<span class="c1"># Run tests and produces a coverage report</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:coverage
+
+<span class="c1"># Launches a web page where you can visualise your tests</span>
+npm<span class="w"> </span>run<span class="w"> </span>test:ui
+
+<span class="c1"># Build and test (CI)</span>
+npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--run
+</code></pre></div>
+<h3 id="test-scripts">Test Scripts</h3>
+<ul>
+<li><code>npm test</code>: Runs tests in watch mode for development</li>
+<li><code>npm run test:coverage</code>: Runs tests once and generates coverage report</li>
+<li>Coverage reports are generated in HTML, LCOV, JSON, and text formats</li>
 </ul>
-<p>At this point you should be able to navigate to the web app in Azure, log in, and see your workspaces.</p>
-<h2 id="available-scripts">Available Scripts</h2>
-<p>In the UI directory, you can run:</p>
-<h3 id="npm-start"><code>npm start</code></h3>
-<p>Runs the app in the development mode.<br>
-Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
-<p>The page will reload if you make edits.<br>
-You will also see any lint errors in the console.</p>
-<h3 id="npm-test"><code>npm test</code></h3>
-<p>Launches the test runner in the interactive watch mode.<br></p>
-<h3 id="npm-run-build"><code>npm run build</code></h3>
-<p>Builds the app for production to the <code>build</code> folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.</p>
-<p>The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!</p>
-<h3 id="npm-run-serve"><code>npm run serve</code></h3>
-<p>Serves the production build from the <code>build</code> folder.<br></p>
-<h3 id="npm-run-testcoverage"><code>npm run test:coverage</code></h3>
-<p>Runs the tests and generates a coverage report.<br></p>
-<h3 id="npm-run-lint"><code>npm run lint</code></h3>
-<p>Runs the linter on the project.<br></p>
-<h3 id="npm-run-format"><code>npm run format</code></h3>
-<p>Runs the formatter on the project.<br></p>
-<h2 id="testing">Testing</h2>
-<p>The UI includes comprehensive unit and component tests using Vitest and React Testing Library. For detailed information about testing practices, setup, and guidelines, see <a href="../ui-testing/">UI Testing</a>.</p>
+<h2 id="coverage-requirements">Coverage Requirements</h2>
+<p>The project maintains high code coverage standards:
+- <strong>Branches</strong>: 80% minimum
+- <strong>Functions</strong>: 80% minimum<br />
+- <strong>Lines</strong>: 80% minimum
+- <strong>Statements</strong>: 80% minimum</p>
+<p>Coverage excludes:
+- Test files themselves (<code>**/*.test.{ts,tsx}</code>)
+- Configuration files (<code>vite.config.ts</code>, <code>eslint.config.js</code>)
+- Type definitions (<code>**/*.d.ts</code>)
+- Setup files (<code>setupTests.ts</code>)
+- Build artifacts and dependencies</p>
+<h2 id="test-organization">Test Organization</h2>
+<h3 id="file-structure">File Structure</h3>
+<div class="highlight"><pre><span></span><code>src/
+├── components/
+│   ├── shared/
+│   │   ├── Component.tsx
+│   │   └── Component.test.tsx
+│   └── workspace/
+│       ├── WorkspaceComponent.tsx
+│       └── WorkspaceComponent.test.tsx
+├── hooks/
+│   ├── useHook.ts
+│   └── useHook.test.ts
+└── setupTests.ts
+</code></pre></div>
+<h3 id="naming-conventions">Naming Conventions</h3>
+<ul>
+<li>Test files: <code>Component.test.tsx</code> (same name as component + <code>.test</code>)</li>
+<li>Test suites: Use <code>describe()</code> blocks for grouping related tests</li>
+<li>Test cases: Use descriptive <code>it()</code> statements that read like specifications</li>
+</ul>
+<h2 id="common-testing-patterns">Common Testing Patterns</h2>
+<h3 id="testing-custom-hooks">Testing Custom Hooks</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">renderHook</span><span class="p">,</span><span class="w"> </span><span class="nx">act</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@testing-library/react&#39;</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useCustomHook</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./useCustomHook&#39;</span><span class="p">;</span>
+
+<span class="nx">it</span><span class="p">(</span><span class="s1">&#39;updates state correctly&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">renderHook</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">useCustomHook</span><span class="p">());</span>
+
+<span class="w">  </span><span class="nx">act</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">result</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">updateValue</span><span class="p">(</span><span class="s1">&#39;new value&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s1">&#39;new value&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="testing-forms">Testing Forms</h3>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;validates form input&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">FormComponent</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByLabelText</span><span class="p">(</span><span class="s1">&#39;Email&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">submitButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByRole</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Submit&#39;</span><span class="w"> </span><span class="p">});</span>
+
+<span class="w">  </span><span class="nx">fireEvent</span><span class="p">.</span><span class="nx">change</span><span class="p">(</span><span class="nx">input</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;invalid-email&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">});</span>
+<span class="w">  </span><span class="nx">fireEvent</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">submitButton</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">waitFor</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="s1">&#39;Invalid email format&#39;</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="testing-error-boundaries">Testing Error Boundaries</h3>
+<div class="highlight"><pre><span></span><code><span class="nx">it</span><span class="p">(</span><span class="s1">&#39;catches and displays errors&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">ThrowError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Test error&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="nx">render</span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">ErrorBoundary</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">ThrowError</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/ErrorBoundary&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+
+<span class="w">  </span><span class="nx">expect</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByText</span><span class="p">(</span><span class="sr">/something went wrong/i</span><span class="p">)).</span><span class="nx">toBeInTheDocument</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2 id="debugging-tests">Debugging Tests</h2>
+<h3 id="useful-debug-utilities">Useful Debug Utilities</h3>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">screen</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@testing-library/react&#39;</span><span class="p">;</span>
+
+<span class="c1">// Debug current DOM state</span>
+<span class="nx">screen</span><span class="p">.</span><span class="nx">debug</span><span class="p">();</span>
+
+<span class="c1">// Debug specific element</span>
+<span class="nx">screen</span><span class="p">.</span><span class="nx">debug</span><span class="p">(</span><span class="nx">screen</span><span class="p">.</span><span class="nx">getByTestId</span><span class="p">(</span><span class="s1">&#39;component&#39;</span><span class="p">));</span>
+
+<span class="c1">// Log all queries</span>
+<span class="nx">screen</span><span class="p">.</span><span class="nx">logTestingPlaygroundURL</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="common-issues">Common Issues</h3>
+<ol>
+<li><strong>Async operations not awaited</strong>: Use <code>waitFor()</code> for async state changes</li>
+<li><strong>FluentUI components not mocked</strong>: Mock complex components that don't render in JSDOM</li>
+<li><strong>Missing test data attributes</strong>: Add <code>data-testid</code> when semantic queries aren't sufficient</li>
+<li><strong>Timer-related tests</strong>: Use <code>vi.useFakeTimers()</code> and <code>vi.advanceTimersByTime()</code></li>
+</ol>
+<h2 id="continuous-integration">Continuous Integration</h2>
+<p>Tests run automatically on:
+- Pull request creation and updates
+- Pushes to main branch
+- Scheduled nightly builds</p>
+<p>CI failures often indicate:
+- Failing tests that need to be fixed
+- Coverage thresholds not met
+- Linting or formatting issues</p>
+<h2 id="best-practices-summary">Best Practices Summary</h2>
+<ol>
+<li><strong>Write tests first</strong> when adding new features (TDD approach)</li>
+<li><strong>Test behavior, not implementation</strong> - focus on user interactions</li>
+<li><strong>Keep tests isolated</strong> - each test should be independent</li>
+<li><strong>Use descriptive test names</strong> - tests should read like specifications</li>
+<li><strong>Mock external dependencies</strong> - keep tests focused on the component under test</li>
+<li><strong>Maintain high coverage</strong> - aim for the 80% threshold across all metrics</li>
+<li><strong>Test error states</strong> - ensure components handle errors gracefully</li>
+<li><strong>Test accessibility</strong> - verify components work with assistive technologies</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://vitest.dev/">Vitest Documentation</a></li>
+<li><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library Docs</a></li>
+<li><a href="https://developer.microsoft.com/en-us/fluentui#/controls/web">FluentUI Testing Guide</a></li>
+<li><a href="https://github.com/testing-library/jest-dom">Jest DOM Matchers</a></li>
+</ul>
 
 
 
